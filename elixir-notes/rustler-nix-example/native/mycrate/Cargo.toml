@@ -1,0 +1,16 @@
+[package]
+# This name must match the `crate:` option in `use Rustler` (development path)
+# and determines the output filename: lib<name>.so
+name = "mycrate"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+# cdylib = C-compatible dynamic library, which is what Erlang's NIF loader expects.
+# The output is placed in target/<target>/release/libmycrate.so
+crate-type = ["cdylib"]
+
+[dependencies]
+# rustler provides the proc macros (#[rustler::nif], rustler::init!) and the
+# glue code that bridges Rust types to Erlang terms.
+rustler = "0.37"
